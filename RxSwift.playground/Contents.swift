@@ -23,4 +23,28 @@ example(of: "subscribe") {
     let three = 3
     let observable = Observable.of(one, two, three)
     
+    observable.subscribe { event in
+      print(event)
+    }
+    observable.subscribe { element in
+      print(element)
+    }
 }
+
+example(of: "empty") {
+    let observable = Observable<Void>.empty()
+    
+    observable.subscribe(
+        
+        onNext: { element in
+            print(element)
+    },
+        
+        onCompleted: {
+            print("Completed")
+    }
+        
+    )
+}
+
+
